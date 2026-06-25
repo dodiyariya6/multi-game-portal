@@ -1,10 +1,10 @@
-#  Multi Game Portal
+# Multi Game Portal
 
 A web-based gaming platform developed using **PHP, MySQL, HTML, CSS, and JavaScript**. The portal allows users to register, log in, play multiple classic browser games, track their scores, and compete on a leaderboard through a simple and interactive interface.
 
 ---
 
-##  Features
+## Features
 
 - Secure User Registration & Login
 - Multiple Classic Browser Games
@@ -15,7 +15,7 @@ A web-based gaming platform developed using **PHP, MySQL, HTML, CSS, and JavaScr
 
 ---
 
-##  Games Available
+## Games Available
 
 - Tic Tac Toe
 - Sudoku
@@ -25,7 +25,7 @@ A web-based gaming platform developed using **PHP, MySQL, HTML, CSS, and JavaScr
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 | Technology | Purpose                    |
 | ---------- | -------------------------- |
@@ -37,7 +37,7 @@ A web-based gaming platform developed using **PHP, MySQL, HTML, CSS, and JavaScr
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```text
 gameportal/
@@ -51,7 +51,7 @@ gameportal/
 
 ---
 
-##  Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -75,7 +75,7 @@ http://localhost/gameportal/
 
 ---
 
-##  Screenshots
+## Screenshots
 
 ### Landing Page
 
@@ -95,6 +95,6 @@ http://localhost/gameportal/
 
 ---
 
-## S License
+## License
 
 This project was developed for educational and learning purposes.

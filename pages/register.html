@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="game-page" style="max-width:420px;">
+    <h2>Create Account</h2>
+    <p style="color:var(--text-light); font-size:0.86rem; margin-bottom:24px;">
+      Join the portal to track your scores
+    </p>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <input type="text"     id="username" placeholder="Username">
+      <input type="email"    id="email"    placeholder="Email">
+      <input type="password" id="password" placeholder="Password (min 6 chars)">
+      <input type="password" id="confirm"  placeholder="Confirm Password">
+      <button class="btn btn-primary" onclick="doRegister()">Register</button>
+    </div>
+
+    <p class="result-msg" id="msg" style="margin-top:16px;"></p>
+    <p style="margin-top:16px; font-size:0.84rem; color:var(--text-light);">
+      Already have an account? <a href="login.html">Log in</a>
+    </p>
+  </div>
+
+  <script>
+  async function doRegister() {
+    const data = new FormData();
+    data.append("username", document.getElementById("username").value);
+    data.append("email",    document.getElementById("email").value);
+    data.append("password", document.getElementById("password").value);
+    data.append("confirm",  document.getElementById("confirm").value);
+
+    const res  = await fetch("../php/register.php", { method: "POST", body: data });
+    const json = await res.json();
+
+    const msg = document.getElementById("msg");
+    msg.textContent = json.message;
+    msg.style.color = json.success ? "green" : "red";
+
+    if (json.success) {
+      setTimeout(() => window.location.href = "login.html", 1500);
+    }
+  }
+  </script>
+
+</body>
+</html>

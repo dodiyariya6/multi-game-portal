@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="game-page" style="max-width:400px;">
+    <h2>Welcome Back</h2>
+    <p style="color:var(--text-light); font-size:0.86rem; margin-bottom:24px;">
+      Log in to save your scores
+    </p>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <input type="text"     id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button class="btn btn-primary" onclick="doLogin()">Log In</button>
+    </div>
+
+    <p class="result-msg" id="msg" style="margin-top:16px;"></p>
+    <p style="margin-top:16px; font-size:0.84rem; color:var(--text-light);">
+      No account? <a href="register.html">Register here</a>
+    </p>
+  </div>
+
+  <script>
+  async function doLogin() {
+    const data = new FormData();
+    data.append("username", document.getElementById("username").value);
+    data.append("password", document.getElementById("password").value);
+
+    const res  = await fetch("../php/login.php", { method: "POST", body: data });
+    const json = await res.json();
+
+    const msg = document.getElementById("msg");
+    msg.textContent = json.message;
+    msg.style.color = json.success ? "green" : "red";
+
+    if (json.success) {
+      // Store username in sessionStorage for display
+      sessionStorage.setItem("username", json.username);
+      setTimeout(() => window.location.href = json.redirect, 800);
+    }
+  }
+
+  // Allow Enter key to submit
+  document.addEventListener("keydown", e => {
+    if (e.key === "Enter") doLogin();
+  });
+  </script>
+
+</body>
+</html>
